@@ -1,15 +1,17 @@
 часть 1
 Уровень 1
 print('значение выражения:',(5+7*5/8)/3**5)
+
 Уровень 2
 v=int(input())
 t=int(input())
 s=v*t
-a=s//109
-print(s-a*109)
+a=s%109
+print(a)
+
 Уровень 3
-a=int(float())
-b=int(float())
+a=float(input())
+b=float(input())
 if a>b:
     print(a)
 else:
@@ -26,6 +28,7 @@ if a==b or b==c or a==c:
 if a==b==c:
     z=3  
 print(z)
+
 Уровень 2
 a=int(input())
 b=int(input())
@@ -38,12 +41,11 @@ else:
 
 Уровень 3
 
-password = input()
 a=False
-while a!=True:        
-    print(password)
+while a!=True:
     password = input()
-    if (len(password)>=8 and  password.islower()==False and  password.isupper()==False):
+    print(password)
+    if (len(password)>=8 and not password.islower() and not  password.isupper() and password.isalpha()):
         a=True
     else:
         a=False
