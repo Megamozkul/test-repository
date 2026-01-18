@@ -1,0 +1,109 @@
+Модуль 1 
+Уровень 1
+x=float(input())
+p=float(input())
+y=float(input())
+a=0
+while x<y:
+    x=(x*(1+(p/100)))//1
+    a=a+1
+print(a)
+
+Уровень 2
+
+n=int(input())
+a=0
+b='for - частный случай цикла while'
+while a<n:
+    print(b)
+    a+=1
+
+Уровень 3
+
+n=int(input())
+a=0
+while n>0:
+    b=n%10
+    a+=b
+    n=n//10
+print(a)
+
+Модуль 2
+Уровень 1 
+
+i=[1,4,1,6,'hello','a',5,'hello']
+b=[]
+for c in i:
+    a=i.count(c)
+    if a>=2:
+        b.append(c)
+print(list(set(b)))
+
+Уровень 2 
+
+from random import randint
+a=[]
+n=5
+m= [[randint(0,100) for i in range(n)]for j in range(n)]
+m
+for c in m:
+    d=(max(c))
+    a.append(d)
+print(max(a))
+
+Уровень 3
+
+d = {'name1':'id1','name2':'id2','name3':'id3'}
+c={value:key 
+   for key,value
+   in d.items()}
+print(c)
+
+Модуль 3 
+Уровень 1
+def get_square(a,b,c):
+    p=(a+b+c)/2
+    s=(p*(p-a)*(p-b)*(p-c))**0.5
+    return s
+a=int(input())
+b=int(input())
+c=int(input())
+
+print(get_square(a,b,c))
+
+Уровень 2
+
+s=  '''Было просто пасмурно, дуло с севера
+А к обеду насчитал сто градаций серого.
+Так всегда первого ноль девятого
+То ли весь мир сошёл с ума, то ли я - того ...
+На столе записка от неё смятая
+Недопитый виски допиваю с матами.
+Посмотрю в окно, допишу главу
+Первое сентября, дворник жжёт листву.
+Серым облакам наплевать на нас
+Если знаешь как жить - живи
+Ты хотела плыть как все - так плыви!'''
+def bolslov(s):
+    a=s.split()
+    b=[]
+    for c in  a:
+        if len(c)>=5:
+            b.append(c)
+    return(b)
+print(bolslov(s))
+
+Уровень 3
+
+s=[56,9,11,2]
+
+a=[]
+for c in s:
+    while c>10:
+        c=c//10
+    a.append(c)
+for i in range (1,(len(a)-1)):
+    if a[i]>a[i-1]:
+        s[i-1],s[i]=s[i],s[i-1]
+print (a)
+print (int(''.join(map(str,s))))
