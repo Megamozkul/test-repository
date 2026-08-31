@@ -1,0 +1,39 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-21 00:06:51
+  Workflow ID: 363d3828-6c24-4a0d-9174-a186a37435f6
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count
+-----  -------
+all          1
+total        1
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Aug 21 00:06:51 2026]
+localrule all:
+    jobid: 0
+    reason: Rules with neither input nor output files are always executed.
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Fri Aug 21 00:06:51 2026]
+Finished jobid: 0 (Rule: all)
+1 of 1 steps (100%) done
+Complete log(s): C:\Users\User\my_test_workflow\.snakemake\log\2026-08-21T000651.433672.snakemake.log

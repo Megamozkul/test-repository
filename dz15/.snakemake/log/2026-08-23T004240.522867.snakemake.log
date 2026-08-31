@@ -1,0 +1,68 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-23 00:42:40
+  Workflow ID: 5b2c9489-17e1-4c21-8d1b-60f220fc5879
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                             count
+----------------------------  -------
+download_data                       1
+preprocessing_data                  1
+train_test_split                    1
+logistic_regression_forecast        1
+calculate_scores                    1
+all                                 1
+total                               6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 00:42:40 2026]
+localrule download_data:
+    input: data/raw/train.csv
+    output: data/interim/dataset_titanic.csv
+    jobid: 3
+    reason: Missing output files: data/interim/dataset_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+RuleException:
+CalledProcessError in file "C:\Users\User\my_test_workflow\data.smk", line 9:
+Command 'python data/download.py data/raw/train.csv data/interim/dataset_titanic.csv' returned non-zero exit status 1.
+[Sun Aug 23 00:42:41 2026]
+Error in rule download_data:
+    message: None
+    jobid: 3
+    input: data/raw/train.csv
+    output: data/interim/dataset_titanic.csv
+    shell:
+        python data/download.py data/raw/train.csv data/interim/dataset_titanic.csv
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Aug 23 00:42:41 2026]
+Error in rule download_data:
+    message: None
+    jobid: 3
+    input: data/raw/train.csv
+    output: data/interim/dataset_titanic.csv
+    shell:
+        python data/download.py data/raw/train.csv data/interim/dataset_titanic.csv
+        (command exited with non-zero exit code)
+Complete log(s): C:\Users\User\my_test_workflow\.snakemake\log\2026-08-23T004240.522867.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,39 @@
+import click
+from pathlib import Path
+import pandas as pd
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+import config  
+
+@click.command()
+@click.argument("input_test_path", type=Path)
+@click.argument("input_pred_path", type=Path)
+@click.argument("output_path", type=Path)
+def calculate_accuracy(input_test_path: Path, input_pred_path: Path, output_path: Path, target: str = config.target):
+    
+    #  проверка существования файлов
+    if not input_test_path.exists():
+        raise FileNotFoundError(f"Не найден тестовый файл: {input_test_path}")
+    if not input_pred_path.exists():
+        raise FileNotFoundError(f"Не найден файл с предсказаниями: {input_pred_path}")
+
+    # Чтение данных
+    y_test = pd.read_csv(input_test_path)[target]
+    y_pred = pd.read_csv(input_pred_path)["target"]  
+
+    # Расчет метрик
+    accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred, average="macro")
+    precision = precision_score(y_test, y_pred, average="macro")
+    recall = recall_score(y_test, y_pred, average="macro")
+
+    # Сохранение результатов
+    df = pd.DataFrame({
+        "accuracy": [accuracy],
+        "f1": [f1],
+        "precision": [precision],
+        "recall": [recall]
+    })
+    df.to_csv(output_path, index=False)
+
+if __name__ == "__main__":
+    calculate_accuracy.invoke()

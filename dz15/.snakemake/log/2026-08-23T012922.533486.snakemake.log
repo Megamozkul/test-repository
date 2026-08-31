@@ -1,0 +1,47 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-23 01:29:22
+  Workflow ID: e16d1b5c-7c31-45bf-a693-de9130427476
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                             count
+----------------------------  -------
+logistic_regression_forecast        1
+calculate_scores                    1
+all                                 1
+total                               3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 01:29:22 2026]
+localrule logistic_regression_forecast:
+    input: data/processed/train_titanic.csv, data/processed/test_titanic.csv
+    output: forecast/logistic_regression_titanic.csv
+    jobid: 4
+    reason: Missing output files: forecast/logistic_regression_titanic.csv; Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: 'Survived',['Pclass', 'Sex', 'Age'] 
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 01:29:24 2026]
+Finished jobid: 4 (Rule: logistic_regression_forecast)
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+RuleException in rule calculate_scores in file "C:\Users\User\my_test_workflow\reports.smk", line 3:
+AttributeError: 'InputFiles' object has no attribute 'test_data', when formatting the following:
+python  reports.calculate_accuracy.py {input.test_data} {input.predictions} {output}

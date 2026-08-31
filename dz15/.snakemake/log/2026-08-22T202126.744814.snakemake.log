@@ -1,0 +1,25 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-22 20:21:26
+  Workflow ID: 351eb0ea-7cd7-40ba-b269-efc7c254d175
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+MissingInputException in rule calculate_scores in file "C:\Users\User\my_test_workflow\reports.smk", line 3:
+Missing input files for rule calculate_scores:
+    output: reports/calculate_scores_titanic.csv
+    affected files:
+        data/processed/test_titanic.csvforecast/model_logistic_regression_titanic.csv

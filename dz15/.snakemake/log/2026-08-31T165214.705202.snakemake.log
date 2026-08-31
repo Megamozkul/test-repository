@@ -1,0 +1,53 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-31 16:52:14
+  Workflow ID: b87f1ddd-8ef6-4e22-ae2b-01cf839c847a
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+calculate_all_scores        1
+all                         1
+total                       2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Aug 31 16:52:15 2026]
+localrule calculate_all_scores:
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv, forecast/gradient_boosting_titanic.csv
+    output: reports/all_scores_titanic.csv
+    jobid: 6
+    reason: Missing output files: reports/all_scores_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Mon Aug 31 16:52:16 2026]
+Finished jobid: 6 (Rule: calculate_all_scores)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Aug 31 16:52:16 2026]
+localrule all:
+    input: data/processed/train_titanic.csv, data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv, forecast/gradient_boosting_titanic.csv, reports/all_scores_titanic.csv
+    jobid: 0
+    reason: Input files updated by another job: reports/all_scores_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Mon Aug 31 16:52:16 2026]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): C:\Users\User\my_test_workflow\.snakemake\log\2026-08-31T165214.705202.snakemake.log

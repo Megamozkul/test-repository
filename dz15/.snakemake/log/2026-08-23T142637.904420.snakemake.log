@@ -1,0 +1,120 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-23 14:26:37
+  Workflow ID: 63f65ae9-42a6-44e4-b682-3f5261503389
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                             count
+----------------------------  -------
+download_data                       1
+preprocessing_data                  1
+train_test_split                    1
+logistic_regression_forecast        1
+calculate_scores                    1
+all                                 1
+total                               6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:26:38 2026]
+localrule download_data:
+    input: data/raw/train.csv
+    output: data/interim/dataset_titanic.csv
+    jobid: 3
+    reason: Missing output files: data/interim/dataset_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 14:26:38 2026]
+Finished jobid: 3 (Rule: download_data)
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:26:38 2026]
+localrule preprocessing_data:
+    input: data/interim/dataset_titanic.csv
+    output: data/processed/preprocessing_dataset_titanic.csv
+    jobid: 2
+    reason: Missing output files: data/processed/preprocessing_dataset_titanic.csv; Input files updated by another job: data/interim/dataset_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 14:26:39 2026]
+Finished jobid: 2 (Rule: preprocessing_data)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:26:39 2026]
+localrule train_test_split:
+    input: data/processed/preprocessing_dataset_titanic.csv
+    output: data/processed/train_titanic.csv, data/processed/test_titanic.csv
+    jobid: 1
+    reason: Missing output files: data/processed/train_titanic.csv, data/processed/test_titanic.csv; Input files updated by another job: data/processed/preprocessing_dataset_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 14:26:40 2026]
+Finished jobid: 1 (Rule: train_test_split)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:26:40 2026]
+localrule logistic_regression_forecast:
+    input: data/processed/train_titanic.csv, data/processed/test_titanic.csv
+    output: forecast/logistic_regression_titanic.csv
+    jobid: 4
+    reason: Missing output files: forecast/logistic_regression_titanic.csv; Input files updated by another job: data/processed/train_titanic.csv, data/processed/test_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 14:26:41 2026]
+Finished jobid: 4 (Rule: logistic_regression_forecast)
+4 of 6 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:26:41 2026]
+localrule calculate_scores:
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv
+    output: reports/calculate_scores_titanic.csv
+    jobid: 5
+    reason: Missing output files: reports/calculate_scores_titanic.csv; Input files updated by another job: forecast/logistic_regression_titanic.csv, data/processed/test_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+RuleException:
+CalledProcessError in file "C:\Users\User\my_test_workflow\reports.smk", line 8:
+Command 'python reports/calculate_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv reports/calculate_scores_titanic.csv' returned non-zero exit status 1.
+[Sun Aug 23 14:26:43 2026]
+Error in rule calculate_scores:
+    message: None
+    jobid: 5
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv
+    output: reports/calculate_scores_titanic.csv
+    shell:
+        
+        python reports/calculate_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv reports/calculate_scores_titanic.csv
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Aug 23 14:26:43 2026]
+Error in rule calculate_scores:
+    message: None
+    jobid: 5
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv
+    output: reports/calculate_scores_titanic.csv
+    shell:
+        
+        python reports/calculate_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv reports/calculate_scores_titanic.csv
+        
+        (command exited with non-zero exit code)
+Complete log(s): C:\Users\User\my_test_workflow\.snakemake\log\2026-08-23T142637.904420.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

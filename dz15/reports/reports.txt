@@ -1,0 +1,10 @@
+from snake_config import reports_path, processed_path, models
+
+rule calculate_scores:
+    input:
+        "data/processed/test_titanic.csv"
+        "forecast/model_logistic_regression_titanic.csv"
+    output:
+        "reports/calculate_scores_titanic.csv"
+    shell:
+        "python  reports.calculate_accuracy.py {input.test_data} {input.predictions} {output}"

@@ -1,0 +1,39 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-23 01:00:47
+  Workflow ID: a2e97f1f-92dd-4032-ac70-cb26b5fce083
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                             count
+----------------------------  -------
+preprocessing_data                  1
+train_test_split                    1
+logistic_regression_forecast        1
+calculate_scores                    1
+all                                 1
+total                               5
+
+Select jobs to execute...
+Execute 1 jobs...
+RuleException in rule preprocessing_data in file "C:\Users\User\my_test_workflow\data.smk", line 16:
+NameError: The name "' '" is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+        python data/preprocessing.py {input} {output} {params.target} {' '.join(params.features)}
+        

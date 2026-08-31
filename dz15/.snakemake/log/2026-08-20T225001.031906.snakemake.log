@@ -1,0 +1,3 @@
+ModuleNotFoundError in file "C:\Users\User\my_test_workflow\data.smk", line 1:
+No module named 'snake_config'
+  File "C:\Users\User\my_test_workflow\data.smk", line 1, in <module>

@@ -1,0 +1,26 @@
+from snake_config import raw_path,interim_path,processed_path
+
+rule download_data:
+    input:
+        "data/raw/train.csv"         
+    output:
+        "data/interim/dataset_titanic.csv"
+    shell:
+        "python  download.py {input} {output}"
+
+rule preprocessing_data:
+    input:
+        "data/interim/dataset_titanic.csv"
+    output:
+        "data/processed/preprocessing_dataset_titanic.csv" 
+    shell:
+        "python  data.preprocessing.py {input} {output}"
+
+rule train_test_split:
+    input:
+        "data/processed/preprocessing_dataset_titanic.csv"
+    output:
+        "data/processed/train_titanic.csv",
+        "data/processed/test_titanic.csv"
+    shell:
+        "python data.train_test_split.py {input} {output}"

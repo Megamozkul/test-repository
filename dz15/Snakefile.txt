@@ -1,0 +1,11 @@
+
+include: "data.smk"
+include: "forecast.smk"
+include: "reports.smk"
+
+rule all:
+    input:
+        "data/processed/train_titanic.csv",
+        "data/processed/test_titanic.csv",
+        "forecast/model_logistic_regression_titanic.csv",
+        "reports/calculate_scores_titanic.csv"

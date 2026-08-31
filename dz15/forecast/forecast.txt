@@ -1,0 +1,12 @@
+from snake_config import reports_path, processed_path
+
+rule logistic_regression_forecast:
+    input:
+        "data/processed/train_titanic.csv",
+        "data/processed/test_titanic.csv"
+    output:
+        "forecast/model_logistic_regression_titanic.csv"
+    shell:
+        """
+        python forecast.logistic_regression.py {input.train} {input.test} {output}
+        """

@@ -1,0 +1,24 @@
+from pathlib import Path
+
+import click
+import config
+import pandas as pd
+
+
+@click.command()
+@click.argument("input_path", type=Path)
+@click.argument("output_path",type=Path)
+def download(output_path:Path,target: str=config.target):
+
+    df = pd.read_csv(input_path)
+
+    # Проверка: есть ли целевая колонка
+    if target not in df.columns:
+        raise ValueError(f"Целевая колонка '{target}' не найдена в датасете. Доступные колонки: {list(df.columns)}")
+
+
+    df.to_csv(output_path, index=False)
+    print(f"Датасет сохранён в: {output_path}")
+
+if __name__ == "__main__":
+    download().invoke()

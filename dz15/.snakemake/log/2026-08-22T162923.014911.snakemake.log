@@ -1,0 +1,5 @@
+TabError in file "<string>", line 10:
+inconsistent use of tabs and spaces in indentation:
+		"forecast/model_logistic_regression_titanic.csv",
+  File "C:\Users\User\anaconda3\envs\snakemake-minimal\Lib\tokenize.py", line 592, in _generate_tokens_from_c_tokenizer
+  File "C:\Users\User\anaconda3\envs\snakemake-minimal\Lib\tokenize.py", line 588, in _generate_tokens_from_c_tokenizer

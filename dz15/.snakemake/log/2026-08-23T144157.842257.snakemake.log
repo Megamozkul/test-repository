@@ -1,0 +1,81 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-08-23 14:41:57
+  Workflow ID: b52f2ea1-47d2-45e2-bfdf-b74859f8fcd9
+  Platform: Windows-11-10.0.26200-SP0
+  Host: DESKTOP-NEO11GH
+  User: User
+  Snakemake version: 9.25.1
+  Python version: 3.14.6 | packaged by conda-forge | (main, Jul 24 2026, 16:16:13) [MSC v.1944 64 bit (AMD64)]
+  Command: C:\Users\User\anaconda3\envs\snakemake-env\Scripts\snakemake --cores 4
+  Snakefile: C:\Users\User\my_test_workflow\Snakefile
+  Base directory: C:\Users\User\my_test_workflow
+  Run directory: C:\Users\User\my_test_workflow
+  Working directory: C:\Users\User\my_test_workflow
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+gradient_boosting_forecast        1
+calculate_all_scores              1
+all                               1
+total                             3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:41:58 2026]
+localrule gradient_boosting_forecast:
+    input: data/processed/train_titanic.csv, data/processed/test_titanic.csv
+    output: forecast/gradient_boosting_titanic.csv
+    jobid: 5
+    reason: Missing output files: forecast/gradient_boosting_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+[Sun Aug 23 14:41:59 2026]
+Finished jobid: 5 (Rule: gradient_boosting_forecast)
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Aug 23 14:41:59 2026]
+localrule calculate_all_scores:
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv, forecast/gradient_boosting_titanic.csv
+    output: reports/all_scores_titanic.csv
+    jobid: 6
+    reason: Missing output files: reports/all_scores_titanic.csv; Input files updated by another job: forecast/gradient_boosting_titanic.csv
+    resources: tmpdir=C:\Users\User\AppData\Local\Temp
+RuleException:
+CalledProcessError in file "C:\Users\User\my_test_workflow\reports.smk", line 20:
+Command 'python reports/calculate_all_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv forecast/gradient_boosting_titanic.csv reports/all_scores_titanic.csv' returned non-zero exit status 2.
+[Sun Aug 23 14:41:59 2026]
+Error in rule calculate_all_scores:
+    message: None
+    jobid: 6
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv, forecast/gradient_boosting_titanic.csv
+    output: reports/all_scores_titanic.csv
+    shell:
+        
+        python reports/calculate_all_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv forecast/gradient_boosting_titanic.csv reports/all_scores_titanic.csv
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Aug 23 14:41:59 2026]
+Error in rule calculate_all_scores:
+    message: None
+    jobid: 6
+    input: data/processed/test_titanic.csv, forecast/logistic_regression_titanic.csv, forecast/gradient_boosting_titanic.csv
+    output: reports/all_scores_titanic.csv
+    shell:
+        
+        python reports/calculate_all_accuracy.py data/processed/test_titanic.csv forecast/logistic_regression_titanic.csv forecast/gradient_boosting_titanic.csv reports/all_scores_titanic.csv
+        
+        (command exited with non-zero exit code)
+Complete log(s): C:\Users\User\my_test_workflow\.snakemake\log\2026-08-23T144157.842257.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
