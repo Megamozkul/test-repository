@@ -1,0 +1,11 @@
+name: snakemake-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pandas=2.3.3
+  - scikit-learn=1.7.2
+  - pip
+  - pip:
+      - snakemake==9.25.1
+      - click==8.4.2

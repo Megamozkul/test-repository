@@ -7,7 +7,9 @@
 
 Теперь про docker.
 
+
 Я не могу проверить "воспроизводимость" т.к имею один компьютер, поэтому тут два варианта:
+
 
 Вариант 1: запустить контейнер docker и создать таблицу  вручную : 
 
@@ -20,4 +22,24 @@ CREATE TABLE IF NOT EXISTS model_metrics (
     recall NUMERIC(5,4) NOT NULL,
     f1_score NUMERIC(5,4) NOT NULL
 );"
-Вариант 2: создал файл docker-compose.yml и create_model_metrics.sql  в папке schema.После команды  "docker compose up -d" PostgreSQL должен автоматически выполнить все .sql файлы из ./schema, и таблица model_metrics создастся сама
+
+
+Вариант 2: создал файл docker-compose.yml и create_model_metrics.sql  в папке schema.После команды  "docker compose up -d" PostgreSQL должен автоматически выполнить все .sql файлы из ./schema, и таблица model_metrics создастся сама.
+
+
+Для фиксации текущего окружения создал файл environment.yml
+
+
+Для воссоздания  и активирования окружения:
+
+
+# 1. Создание окружения из файла
+conda env create -f environment.yml
+
+
+# 2. Активируем
+conda activate snakemake_env
+
+
+# 3*. Проверяем, что Snakemake доступен
+snakemake --version

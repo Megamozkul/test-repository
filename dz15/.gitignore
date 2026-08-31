@@ -1,0 +1,25 @@
+# Временные файлы Snakemake
+.snakemake/
+
+# Файлы Python
+*.pyc
+__pycache__/
+
+# Логи и временные файлы
+*.log
+*.tmp
+
+# Результаты выполнения
+results/
+output/
+
+# Кэши
+.cache/
+
+# Виртуальное окружение
+venv/
+env/
+
+# Файлы IDE
+.idea/
+.vscode/
