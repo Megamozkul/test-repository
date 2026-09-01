@@ -1,4 +1,4 @@
-from snake_config import raw_path,interim_path,processed_path
+from snake_config import raw_path, interim_path, processed_path
 
 
 rule download_data:
@@ -7,7 +7,7 @@ rule download_data:
     output:
         "data/interim/dataset_titanic.csv"
     params:
-        target="Survived"   # имя целевой колонки из твоего CSV
+        target="Survived"
     shell:
         """
         python data/download.py {input} {output} {params.target}
@@ -18,25 +18,27 @@ rule preprocessing_data:
     input:
         "data/interim/dataset_titanic.csv"
     output:
-        "data/processed/preprocessing_dataset_titanic.csv"
+        "data/processed/preprocessing_dataset_{preproc}.csv"
     params:
+        preproc="{preproc}",
         target="Survived",
         features=["Pclass", "Sex", "Age"]
     shell:
         """
-        python data/preprocessing.py {input} {output} {params.target} {params.features}
+        python data/preprocessing.py {input} {output} {params.preproc} {params.target} {params.features}
         """
+
 
 rule train_test_split:
     input:
-        "data/processed/preprocessing_dataset_titanic.csv"
+        "data/processed/preprocessing_dataset_{preproc}.csv"
     output:
-        "data/processed/train_titanic.csv",
-        "data/processed/test_titanic.csv"
+        train="data/processed/train_{preproc}.csv",
+        test="data/processed/test_{preproc}.csv"
     params:
         target="Survived",
         features=["Pclass", "Sex", "Age"]
     shell:
         """
-        python data/train_test_split.py {input} {output} {params.target} {params.features}
+        python data/train_test_split.py {input} {output.train} {output.test} {params.target} {params.features}
         """

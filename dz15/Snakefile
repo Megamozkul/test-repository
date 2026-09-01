@@ -3,10 +3,15 @@ include: "data.smk"
 include: "forecast.smk"
 include: "reports.smk"
 
+PREPROC_VARIANTS = ["standard", "scaled"]
+
 rule all:
     input:
-        "data/processed/train_titanic.csv",
-        "data/processed/test_titanic.csv",
-        "forecast/logistic_regression_titanic.csv",
-        "forecast/gradient_boosting_titanic.csv",
-        "reports/all_scores_titanic.csv"
+        expand("data/processed/preprocessing_dataset_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("data/processed/train_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("data/processed/test_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("forecast/logistic_regression_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("forecast/gradient_boosting_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("forecast/random_forest_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        expand("reports/all_scores_{preproc}.csv", preproc=PREPROC_VARIANTS),
+        "reports/comparison_titanic.csv"
